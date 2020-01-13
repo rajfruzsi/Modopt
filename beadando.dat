@@ -1,0 +1,87 @@
+set Edzesek := A B C D;
+set Vendegek:= Zsuzsi Barbi Fruzsi;
+set Napok:= Hetfo Kedd Szerda Csut Pentek Szombat Vasarnap;
+set Testresz:=Vadli  Kar   Vall  Fenek Hat   Has    Comb;
+set Terem:=Foterem Kisterem;
+
+
+param szabad:
+              Hetfo Kedd Szerda Csut  Pentek Szombat Vasarnap :=
+  Foterem       1      1    1     1      1       1      0
+  Kisterem      1      1    1     1      1       0      1
+  ;
+
+param kapacitas:=
+Foterem 3
+Kisterem 2
+;
+
+param penz:=
+Foterem 3000
+Kisterem 4000
+;
+
+
+param preferaltIdopont:
+          Hetfo   Kedd Szerda Csut  Pentek Szombat Vasarnap :=
+  Zsuzsi    0       1    1      1    0       0      1
+  Barbi     0       0    1      0    0       1      0
+  Fruzsi    1      0    0      1    1       0      0
+  ;
+
+
+param baratok:
+          Zsuzsi Barbi Fruzsi:=
+  Zsuzsi  1        1     0
+  Barbi   1        1     1
+  Fruzsi  1        1     1
+  ;
+  
+param dij := 
+A 2000
+B 3000
+C 2000
+D 1500
+;
+
+param maxPenz := 
+Zsuzsi 5000
+Barbi 4700
+Fruzsi 6000
+;
+
+param preferaltKaloria := 
+Zsuzsi 600
+Barbi 450
+Fruzsi 450
+;
+
+param maxkaloria := 
+Zsuzsi 2500
+Barbi 2200
+Fruzsi 1500
+;
+param kaloria := 
+A 300
+B 200
+C 400
+D 350
+; 
+
+param maxfo:
+       Hetfo Kedd Szerda Csut Pentek Szombat Vasarnap :=
+  A      0     2     0     3    3      1       3
+  B      2     1     2     0    0      3       0
+  C      0     1     0     2    1      0       0
+  D      0     3     3     0    0      2       0
+  ;
+
+param testresz:
+       Vadli  Kar   Vall  Fenek Hat   Has    Comb :=
+  A      1     0     0     0    0      0       1
+  B      0     1     0     0    0      1       0
+  C      0     0     0     1    1      0       0
+  D      0     0     1     0    0      0       0
+  ;
+
+end;
