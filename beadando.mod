@@ -1,8 +1,9 @@
 /*
-A feladat, hogy egy edzőlétesítményben megtartott edzésekkel az összes vendég úgy tudjon edzeni, hogy hét végére a legtöbb kalóriát égesse el.
+A feladat, hogy egy edzőlétesítményben megtartott edzésekkel az összes vendég úgy tudjon edzeni, hogy hét végére a létesítmény a lehető legnagyobb profitot tudja
+termelni a termek és az edzések helyes beosztásával, a vendégigények kielégítésével.
 Minden Vendégnek vannak preferált napjai, amikor tud edzeni menni, illetve preferált kalóriaszám, amit minimum el akar égetni az adott héten, és egy maximum is,
 hogy ne hajszolja túl magát. 
-Minden Edzés ugyanakkor fix összegbe kerül, így a Vendégeknek bele kell férnie a saját heti keretükbe. Egy Edzésen előre megadott létszám vehet részt az adott napon, és az edzések a létesítmény egyes termeiben zajlanak le. Természetesen egy edzés nem történhet egyszerre 2 teremben, és, ha aznap egy ember sem venne részt az edzésen (az egyéni preferenciák stb.) miatt, akkor ne is legyen terembe beosztva edzés.
+Minden Edzés ugyanakkor más-más összegbe kerül, így a Vendégeknek bele kell férnie a saját heti keretükbe. Egy Edzésen előre megadott létszám vehet részt az adott napon, és az edzések a létesítmény egyes termeiben zajlanak le. Természetesen egy edzés nem történhet egyszerre 2 teremben, és, ha aznap egy ember sem venne részt az edzésen (az egyéni preferenciák stb.) miatt, akkor ne is legyen terembe beosztva edzés.
 Az edzőlétesítményben több terem is található, amik megadott kapacitással rendelkeznek, így abba bele kell férnie az edzés résztvevőinek, ha nem, akkor másik terembe kerül át az edzés. A termeknek van egy foglaltsági tulajdonsága is, így amikor az adott nap valamiért a terem nem elérhető, ott edzést sem lehet tartani.
 Minden Vendég számára van olyan másik Vendég akit kevésbé szívlel, így azokkal nem szeretne együtt edzeni. A Vendégeknél oda kell arra is figyelni, hogy egy héten egy testrészre csakis egyszer edzhetnek.
 A modell célja tehát egy olyan beosztás elkészítése, ami megfelel az összes fent leírtnak.
@@ -93,7 +94,7 @@ s.t. EgyNapEgyTerembenEgyEdzes{n in Napok, t in Terem}:
 
 
 maximize Bevetel:
-	sum{t in Terem,n in Napok,e in Edzesek}(hol[e,t,n]*penz[t]);
+	sum{t in Terem,n in Napok,e in Edzesek}(hol[e,t,n]*penz[t])+sum{v in Vendegek,n in Napok,e in Edzesek}(mit[v,e,n]*dij[e]);
 
 solve;
 
